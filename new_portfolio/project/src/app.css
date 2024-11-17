@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 overflow-x-hidden;
+}
+
+.animated-bg {
+  @apply fixed inset-0 -z-10;
+}
+
+.animated-bg::before,
+.animated-bg::after {
+  content: '';
+  @apply absolute inset-0 opacity-70;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  transform-origin: center;
+}
+
+.animated-bg::after {
+  filter: blur(60px);
+  animation-direction: reverse;
+  animation-duration: 20s;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
